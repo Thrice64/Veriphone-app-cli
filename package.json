@@ -1,0 +1,23 @@
+{
+  "name": "veriphone-app-cli",
+  "version": "1.0.0",
+  "description": "a cli to verify a phone number, displaying phone number information such as (mobile, land line, toll free, etc) and other fields",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thrice64/Veriphone-app-cli.git"
+  },
+  "author": "Matthew Mendoza, Evan Liang, Deepanker Seth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thrice64/Veriphone-app-cli/issues"
+  },
+  "homepage": "https://github.com/Thrice64/Veriphone-app-cli#readme",
+  "dependencies": {
+    "superagent": "^8.0.9",
+    "yargs": "^17.7.1"
+  }
+}
