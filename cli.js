@@ -22,7 +22,7 @@ yargs(process.argv.slice(2))
                     .positional('phone', {
                         describe: 'phone number to get info on',
                         type: 'string',
-                        choices: ['(955)241-2633', '(826)417-3066', '(945)241-2633']
+                        choices: ['9552412633', '8264173066', '9452412633']
                     })
                     // options aka flags that exists on our command
                     // first argument is the short or long form for the option name (ex: long form)
@@ -37,12 +37,12 @@ yargs(process.argv.slice(2))
         }, 
         // handler function for handling parsed command, command arguments, and options
         (args) => {
-            if (args.phone === '(826)417-3066') {
-                // invoke a function to phone '(826)417-3066'
+            if (args.phone === '8264173066') {
+                // invoke a function to phone '8264173066'
                 console.log(args);
-            } else if (args.phone === '(955)241-2633') {
-                // invoke a function to phone '(955)241-2633'
-                console.log('not (826)417-3066');
+            } else if (args.phone === '9552412633') {
+                // invoke a function to phone '9552412633'
+                console.log('not 8264173066');
             } else {
                 console.log(`${args.phone} is not available`);
             }
