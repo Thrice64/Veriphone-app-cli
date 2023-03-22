@@ -1,3 +1,4 @@
+const { string } = require('yargs');
 const yargs = require('yargs/yargs');
 
 yargs(process.argv.slice(2))
@@ -22,7 +23,7 @@ yargs(process.argv.slice(2))
                     .positional('phone', {
                         describe: 'phone number to get info on',
                         type: 'string',
-                        choices: ['9552412633', '8264173066', '9452412633']
+                        //choices: ['9552412633', '8264173066', '9452412633']
                     })
                     // options aka flags that exists on our command
                     // first argument is the short or long form for the option name (ex: long form)
@@ -37,15 +38,38 @@ yargs(process.argv.slice(2))
         }, 
         // handler function for handling parsed command, command arguments, and options
         (args) => {
-            if (args.phone === '8264173066') {
+            if (typeof args.phone === "string" && /^\d{10}$/.test(args.phone)) {
                 // invoke a function to phone '8264173066'
                 console.log(args);
-            } else if (args.phone === '9552412633') {
-                // invoke a function to phone '9552412633'
-                console.log('not 8264173066');
             } else {
-                console.log(`${args.phone} is not available`);
+                console.log(`${args.phone} is not a phone number`);
             }
+        }
+    )
+    .command(
+        'example',
+        'example (dummy) phone nummber for any country/phone-type combination',
+
+        (yargs) => {
+            return (
+                yargs
+                .options('type', {
+                    alias: 't',
+                    describe:
+                        'the type of example number to return',
+                    choices: ['fixed_line', 'mobile' , 'premium_rate', 'shared_cost', 'toll_free', 'voip'],
+                    default: 'mobile'
+                }
+                )
+
+                .options('Countrycode', {
+                    alias: 'c',
+                    describe:
+                        'the country code of phone number',
+                    default: 'US'
+                })
+
+            )
         }
     )
     .help().argv;
