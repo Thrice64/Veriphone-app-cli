@@ -1,4 +1,4 @@
-const prompts = require(`promptsj`);
+const prompts = require(`prompts`);
 
 const api = require(`./api.js`);
 

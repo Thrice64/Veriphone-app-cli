@@ -19,25 +19,25 @@ const verifyPhone = async (phone) => {
 
 const example = async (country, phoneType) => {
     try {
-        let verifyURL = `${base}/example?`
+        let exampleURL= `${base}/example?`
 
         if (phoneType) {
-            verifyURL += `type=${phoneType}`;
+            exampleURL+= `type=${phoneType}`;
         }
         if (country) {
-            verifyURL += `&country_code=${country}`;
+            exampleURL+= `&country_code=${country}`;
         }
 
-        verifyURL += `&key=${apiKey}`;
-        console.log(verifyURL);
+        exampleURL+= `&key=${apiKey}`;
+        console.log(exampleURL);
 
-        const res = await superagent.get(verifyURL);
+        const res = await superagent.get(exampleURL);
         console.log(res.body);
     } catch (error) {
         console.log(error);
     }
 };
-//example('FR', 'fixed_line')
+example('FR', 'fixed_line')
 
 module.exports = {
     verifyPhone,
