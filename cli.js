@@ -1,5 +1,6 @@
 const { string } = require('yargs');
 const yargs = require('yargs/yargs');
+const app = require('./app');
 
 yargs(process.argv.slice(2))
     // $0  expands the file name
@@ -40,7 +41,8 @@ yargs(process.argv.slice(2))
         (args) => {
             if (typeof args.phone === "string" && /^\d{10}$/.test(args.phone)) {
                 // invoke a function to phone '8264173066'
-                console.log(args);
+                //console.log(args);
+                app.verifyPhone(args);
             } else {
                 console.log(`${args.phone} is not a phone number`);
             }

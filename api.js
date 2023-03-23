@@ -2,9 +2,9 @@
 // verify phone function needs to be fixed just used as a sample
 const superagent = require('superagent');
 const base = 'https://api.veriphone.io/v2'
-const apiKey = ""; // api key here
+const apiKey = "76057CC10E194813A24A27036A55F425"; // api key here
 
-const verifyPhone = async (phone) => {
+const verify= async (phone) => {
     try {
         const verifyURL = `${base}/verify?phone=${phone}&key=${apiKey}`;
         console.log(verifyURL);
@@ -15,7 +15,12 @@ const verifyPhone = async (phone) => {
         console.log(error);
     }
 };
-//verifyPhone(6263083290);
+//verify(6263083290);
+
+const getDetails = async (phone, seletedDetail) => {
+    const details = await verify(phone);
+    return details[seletedDetail];
+};
 
 const example = async (country, phoneType) => {
     try {
@@ -37,9 +42,10 @@ const example = async (country, phoneType) => {
         console.log(error);
     }
 };
-example('FR', 'fixed_line')
+//example('FR', 'fixed_line')
 
 module.exports = {
-    verifyPhone,
+    verify,
+    getDetails,
     example
 };
