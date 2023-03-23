@@ -2,7 +2,7 @@
 // verify phone function needs to be fixed just used as a sample
 const superagent = require('superagent');
 const base = 'https://api.veriphone.io/v2'
-const apiKey = "76057CC10E194813A24A27036A55F425"; // api key here
+const apiKey = ""; // api key here
 
 const verify= async (phone) => {
     try {
