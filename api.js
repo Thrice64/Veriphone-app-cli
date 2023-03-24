@@ -10,7 +10,8 @@ const verify= async (phone) => {
         console.log(verifyURL);
         
         const res = await superagent.get(verifyURL);
-        console.log(res.body);
+        
+        return [res.body];
     } catch (error) {
         console.log(error);
     }
@@ -38,6 +39,8 @@ const example = async (country, phoneType) => {
 
         const res = await superagent.get(exampleURL);
         console.log(res.body);
+
+        return [res.body];
     } catch (error) {
         console.log(error);
     }
