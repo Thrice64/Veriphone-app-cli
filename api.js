@@ -11,17 +11,12 @@ const verify= async (phone) => {
         
         const res = await superagent.get(verifyURL);
         
-        return [res.body];
+        return res.body;
     } catch (error) {
         console.log(error);
     }
 };
 //verify(6263083290);
-
-const getDetails = async (phone, seletedDetail) => {
-    const details = await verify(phone);
-    return details[seletedDetail];
-};
 
 const example = async (country, phoneType) => {
     try {
@@ -49,6 +44,5 @@ const example = async (country, phoneType) => {
 
 module.exports = {
     verify,
-    getDetails,
     example
 };
