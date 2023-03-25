@@ -2,6 +2,7 @@ const { string } = require('yargs');
 const yargs = require('yargs/yargs');
 const app = require('./app');
 
+
 yargs(process.argv.slice(2))
     // $0  expands the file name
     // <> indicate that the command is mandatory
@@ -24,7 +25,6 @@ yargs(process.argv.slice(2))
                     .positional('phone', {
                         describe: 'phone number to get info on',
                         type: 'string',
-                        //choices: ['9552412633', '8264173066', '9452412633']
                     })
                     // options aka flags that exists on our command
                     // first argument is the short or long form for the option name (ex: long form)
@@ -40,7 +40,7 @@ yargs(process.argv.slice(2))
         // handler function for handling parsed command, command arguments, and options
         (args) => {
             if (typeof args.phone === "string" && /^\d{10}$/.test(args.phone)) {
-                // invoke a function to phone '8264173066'
+                // invoke a function to phone 
                 //console.log(args);
                 app.verifyPhone(args);
             } else {
@@ -49,30 +49,48 @@ yargs(process.argv.slice(2))
         }
     )
     .command(
-        'example',
+        'example <type> <type2>',
         'example (dummy) phone nummber for any country/phone-type combination',
 
         (yargs) => {
             return (
                 yargs
-                .options('type', {
-                    alias: 't',
-                    describe:
-                        'the type of example number to return',
+                .positional('type', {
+                    describe: 'country codes available to use as input',
+                    type: 'string',
+                    choices: ['US', 'RU', 'FR', 'GB', 'CN'],
+                    default: 'US'
+                }
+                )
+
+                .positional('type2', {
+                    describe: 'the type of example number to return',
+                    type: 'string',
                     choices: ['fixed_line', 'mobile' , 'premium_rate', 'shared_cost', 'toll_free', 'voip'],
                     default: 'mobile'
                 }
                 )
 
-                .options('Countrycode', {
-                    alias: 'c',
+
+                .options('numberType', {
+                    alias: 'nt',
                     describe:
-                        'the country code of phone number',
-                    default: 'US'
+                        'the type of number you would like to generate',
+                    default: 'mobile'
                 })
 
             )
+        },
+        (args) => {
+            if (args.type && args.type2) {
+                app.examplePhone(args.type, args.type2);
+                
+            } else {
+                console.log(args.type, 'is not a valid choice', args.type2);
+             }
+
         }
+
     )
     .help().argv;
     // help() build a help using he details frm our yargs setup
