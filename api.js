@@ -6,7 +6,7 @@ const superagent = require('superagent');
 const base = 'https://api.veriphone.io/v2';
 
 // insert your api key for veriphone here
-const apiKey = "76057CC10E194813A24A27036A55F425"; // api key here
+const apiKey = ""; // api key here
 
 // verify api function to search by phone number and/or country_code id
 const verify= async (phone, country_code) => {
